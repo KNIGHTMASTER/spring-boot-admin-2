@@ -1,0 +1,76 @@
+#============================================================================
+# SERVER
+#============================================================================
+server:
+  port: 10000
+#============================================================================
+# SPRING
+#============================================================================
+spring:
+  application:
+    name : kf-api-gateway
+  profiles:
+    active : local
+  management:
+    security:
+      enabled: false
+#============================================================================
+# LOGGER
+#============================================================================
+#logging:
+#  config: classpath:logback-spring.xml
+#  file : ${log.file.path}
+
+#============================================================================
+# LOG FILE
+#============================================================================
+#log :
+#  file :
+#    path : /log/app/gateway/kf-gateway.log
+
+#============================================================================
+# ZUUL
+#============================================================================
+zuul:
+  sensitive-headers: Cookie, SetCookie
+#  add-proxy-headers: true
+  prefix: /gateway
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+    max-total-connections: 200
+    max-per-route-connections: 20
+    time-unit: MILLISECONDS
+    time-to-live: 10000
+  routes:
+    client1 :
+      path : /client-1/**
+      serviceId : client-1
+
+#============================================================================
+# EUREKA
+#============================================================================
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    registerWithEureka: true
+    fetchRegistry: true
+
+#============================================================================
+# INFO
+#============================================================================
+info:
+  app:
+    name: API Gateway Application
+    description: Zuul API Gateway Application
+    version: 1.0.0
+
+#============================================================================
+# RIBBON FOR ZUUL
+#============================================================================
+ribbon:
+  eager-load:
+    enabled : true
+  ReadTimeout : 6000
+  ConnectTimeout : 6000
