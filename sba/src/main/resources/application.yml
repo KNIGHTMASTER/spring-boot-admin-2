@@ -23,7 +23,7 @@ spring :
         telegram :
           enabled : true
           auth-token : 12345
-          chat-id : 125995494
+          chat-id : -260621444
           disable-notify : false
           parse_mode : 'HTML'
           #apiUrl : https://api.telegram.org
