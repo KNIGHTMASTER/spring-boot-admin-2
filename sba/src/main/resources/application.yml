@@ -22,7 +22,7 @@ spring :
       notify:
         telegram :
           enabled : true
-          auth-token : 655269130:AAG60FzepU7qeRXnVRMbX-DDNbqbrwQkFw0
+          auth-token : 12345
           chat-id : 125995494
           disable-notify : false
           parse_mode : 'HTML'
