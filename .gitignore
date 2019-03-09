@@ -33,3 +33,5 @@ zuul/target/
 sba/target/
 
 eureka/target/
+
+target/

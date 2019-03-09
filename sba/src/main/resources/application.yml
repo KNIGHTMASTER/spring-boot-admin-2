@@ -20,6 +20,15 @@ spring :
   boot:
     admin:
       notify:
+        telegram :
+          enabled : true
+          auth-token : 655269130:AAG60FzepU7qeRXnVRMbX-DDNbqbrwQkFw0
+          chat-id : 125995494
+          disable-notify : false
+          parse_mode : 'HTML'
+          #apiUrl : https://api.telegram.org
+          message : "<strong>#{instance.registration.name}</strong>/#{instance.id} is <strong>#{instance.statusInfo.status}</strong>"
+          #message : "#{application.name} (#{application.id})\nstatus changed from #{from.status} to #{to.status}#{health[0] != null ? ('\n\n'+ indicator[0] + ' health indicator is ' + health[0] ) : ''}\n\n#{application.healthUrl}"
         mail:
           from: "Spring Boot Admin <noreply@foo.com>"
           # Comma-delimited list of recipient email addresses
@@ -36,3 +45,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
     registerWithEureka: false
     fetchRegistry: true
+
+logging :
+  level :
+    org.springframework.web.client.RestTemplate : DEBUG
